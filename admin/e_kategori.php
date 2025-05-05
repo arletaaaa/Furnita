@@ -1,20 +1,20 @@
 <?php
 include "koneksi.php";
 $id = $_GET['id'];
-$sql = mysqli_query($koneksi, "SELECT * FROM tb_kategori WHERE id_kategori '$id'");
-$date = mysqli_fetch_array($sql);
+$sql = mysqli_query($koneksi, "SELECT * FROM tb_kategori WHERE id_kategori = '$id'");
+$data = mysqli_fetch_array($sql);
 
 if (isset($_POST['simpan'])) {
-    $nm_kategori = $_POST['nm_kategori'];
+  $nm_kategori = $_POST['nm_kategori'];
 
-    $query = mysqli_query($koneksi, "UPDATE tb_kategori SET nm_kategori '$nm_kategori' WHERE id_kategori = ''$id");
-    if ($query) {
-        echo "<script>alert(Data berhasil diubah!)</script>";
-        header("refresh:0, kategori.php");
-    } else {
-        echo "<script>alert(Data gagal diubah!)</script>";
-        header("refresh:0, kategori.php");
-    }
+  $query = mysqli_query($koneksi, "UPDATE tb_kategori SET nm_kategori = '$nm_kategori' WHERE id_kategori = '$id'");
+  if ($query) {
+    echo "<script>alert('Data berhasil diubah!')</script>";
+    header("refresh:0, kategori.php");
+  } else {
+    echo "<script>alert('Data gagal diubah!')</script>";
+    header("refresh:0, kategori.php");
+  }
 }
 ?>
 
@@ -63,8 +63,8 @@ if (isset($_POST['simpan'])) {
   <!-- ======= Header ======= -->
   <header id="header" class="header fixed-top d-flex align-items-center">
 
-    
-  <div class="d-flex align-items-center justify-content-between">
+
+    <div class="d-flex align-items-center justify-content-between">
       <a href="index.html" class="logo d-flex align-items-center">
         <img src="assets/img/logo.png" alt="">
         <span class="d-none d-lg-block">Furnita</span>
@@ -243,60 +243,60 @@ if (isset($_POST['simpan'])) {
   <!-- ======= Sidebar ======= -->
   <aside id="sidebar" class="sidebar">
 
-  <ul class="sidebar-nav" id="sidebar-nav">
+    <ul class="sidebar-nav" id="sidebar-nav">
 
-<li class="nav-item">
-  <a class="nav-link " href="index.php">
-    <i class="bi bi-grid"></i>
-    <span>Beranda</span>
-  </a>
-</li><!-- End Beranda Nav -->
+      <li class="nav-item">
+        <a class="nav-link " href="index.php">
+          <i class="bi bi-grid"></i>
+          <span>Beranda</span>
+        </a>
+      </li><!-- End Beranda Nav -->
 
-<li class="nav-item">
-  <a class="nav-link collapsed" href="kategori.php">
-  <i class="bi bi-box-seam"></i>
-    <span>Kategori Produk</span>
-  </a>
-</li><!-- End Profile Page Nav -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="kategori.php">
+          <i class="bi bi-box-seam"></i>
+          <span>Kategori Produk</span>
+        </a>
+      </li><!-- End Profile Page Nav -->
 
-<li class="nav-item">
-  <a class="nav-link collapsed" href="produk.php">
-    <i class="bi bi-question-circle"></i>
-    <span>Produk</span>
-  </a>
-</li><!-- End Produk Page Nav -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="produk.php">
+          <i class="bi bi-question-circle"></i>
+          <span>Produk</span>
+        </a>
+      </li><!-- End Produk Page Nav -->
 
-<li class="nav-item">
-  <a class="nav-link collapsed" href="keranjang.php">
-    <i class="bi bi-envelope"></i>
-    <span>Keranjang</span>
-  </a>
-</li><!-- End Keranjang Page Nav -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="keranjang.php">
+          <i class="bi bi-envelope"></i>
+          <span>Keranjang</span>
+        </a>
+      </li><!-- End Keranjang Page Nav -->
 
-<li class="nav-item">
-  <a class="nav-link collapsed" href="transaksi.php">
-    <i class="bi bi-card-list"></i>
-    <span>Transaksi</span>
-  </a>
-</li><!-- End Transaksi Page Nav -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="transaksi.php">
+          <i class="bi bi-card-list"></i>
+          <span>Transaksi</span>
+        </a>
+      </li><!-- End Transaksi Page Nav -->
 
-<li class="nav-item">
-  <a class="nav-link collapsed" href="laporan.php">
-    <i class="bi bi-box-arrow-in-right"></i>
-    <span>Laporan</span>
-  </a>
-</li><!-- End Laporan Page Nav -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="laporan.php">
+          <i class="bi bi-box-arrow-in-right"></i>
+          <span>Laporan</span>
+        </a>
+      </li><!-- End Laporan Page Nav -->
 
-<li class="nav-item">
-  <a class="nav-link collapsed" href="pengguna.php">
-  <i class="bi bi-person"></i>
-    <span>Pengguna</span>
-  </a>
-</li><!-- End Pengguna Page Nav -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="pengguna.php">
+          <i class="bi bi-person"></i>
+          <span>Pengguna</span>
+        </a>
+      </li><!-- End Pengguna Page Nav -->
 
-</ul>
+    </ul>
 
-</aside><!-- End Sidebar-->
+  </aside><!-- End Sidebar-->
 
   <main id="main" class="main">
 
@@ -316,13 +316,13 @@ if (isset($_POST['simpan'])) {
         <div class="col-lg-6">
           <div class="card">
             <div class="card-body">
+
+              <!-- Vertikal Form -->
+
               <form class="row g-3 mt-2" method="post">
                 <div class="col-12">
-                  <label for="nm_kategori"
-                  class="form-label">Nama Kategori</label>
-                  <input type="text" class="form-control"
-                  id="nm_kategori" name="nm_kategori"
-                  placeholder="Masukkan Nama Kategori Produk" value="<?php echo $data['nm_kategori']; ?>">
+                  <label for="nm_kategori" class="form-label">Nama Kategori</label>
+                  <input type="text" class="form-control" id="nm_kategori" name="nm_kategori" placeholder="Masukkan Nama Kategori Produk" value="<?php echo $data['nm_kategori']; ?>">
                 </div>
                 <div class="text-center">
                   <button type="reset" class="btn btn-secondary">Reset</button>
@@ -348,7 +348,7 @@ if (isset($_POST['simpan'])) {
       <!-- Licensing information: https://bootstrapmade.com/license/ -->
       <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
       Designed by <a href="https://www.instagram.com/arletaamaya?igsh=ejZ5ZHVndXBpeGNw"
-      target="_blank">Arleta</a>
+        target="_blank">Arleta</a>
     </div>
   </footer><!-- End Footer -->
 
