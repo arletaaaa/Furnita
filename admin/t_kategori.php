@@ -133,7 +133,7 @@ if (isset($_POST['simpan'])) {
 
 <li class="nav-item">
   <a class="nav-link collapsed" href="produk.php">
-    <i class="bi bi-question-circle"></i>
+    <i class="bi bi-shop"></i>
     <span>Produk</span>
   </a>
 </li><!-- End Produk Page Nav -->
