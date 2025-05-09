@@ -1,3 +1,20 @@
+<?php
+session_start();
+include "koneksi.php";
+
+// Cek apakah sudah login
+if (!isset($_SESSION["login"])) {
+  header("Location: login.php");
+  exit;
+}
+
+// Cek apakah status tersedia dan pastikan user adalah admin
+if (!isset($_SESSION["status"]) || $_SESSION["status"] !== "admin") {
+  echo "<script>alert('Akses ditolak! Halaman ini hanya untuk Admin.'); window.location.href='login.php'</script>";
+  exit;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -62,7 +79,7 @@
 
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
             <li class="dropdown-header">
-              <h6>Arleta</h6>
+              <h6><?php echo isset($_SESSION['username']) ? htmlspecialchars($_SESSION['username']) : 'Guest' ?></h6>
               <span>Admin</span>
             </li>
             <li>
@@ -74,7 +91,7 @@
             </li>
 
             <li>
-              <a class="dropdown-item d-flex align-items-center" href="#">
+              <a class="dropdown-item d-flex align-items-center" href="logout.php">
                 <i class="bi bi-box-arrow-right"></i>
                 <span>Sign Out</span>
               </a>
@@ -102,7 +119,7 @@
 
       <li class="nav-item">
         <a class="nav-link collapsed" href="kategori.php">
-        <i class="bi bi-tags"></i>
+          <i class="bi bi-tags"></i>
           <span>Kategori Produk</span>
         </a>
       </li><!-- End Profile Page Nav -->
@@ -137,7 +154,7 @@
 
       <li class="nav-item">
         <a class="nav-link collapsed" href="keranjang.php">
-        <i class="bi bi-cart"></i>
+          <i class="bi bi-cart"></i>
           <span>Keranjang</span>
         </a>
       </li><!-- End Pengguna Page Nav -->
@@ -161,66 +178,66 @@
     <section class="section dashboard">
       <div class="row">
 
-<!-- Welcome Card -->
-<div class="col-12">
-  <div class="card info-card customers-card shadow-sm w-100">
-    <div class="card-body text-center py-4">
-      <h4 class="mb-2">Selamat datang di Website Admin
-        <strong>Furnita!</strong>
-      </h4>
-      <p class="text-muted small mb-0">Kelola produk, transaksi, dan pelanggan dengan mudah</p>
+        <!-- Welcome Card -->
+        <div class="col-12">
+          <div class="card info-card customers-card shadow-sm w-100">
+            <div class="card-body text-center py-4">
+              <h4 class="mb-2">Selamat datang di Website Admin
+                <strong>Furnita!</strong>
+              </h4>
+              <p class="text-muted small mb-0">Kelola produk, transaksi, dan pelanggan dengan mudah</p>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
-</div>
 
-</div><!-- End Welcome Card -->
-<div class="row">
-  <!-- Sales Card -->
-            <div class="col-xxl-4 col-md-6">
-              <div class="card info-card sales-card">
+      </div><!-- End Welcome Card -->
+      <div class="row">
+        <!-- Sales Card -->
+        <div class="col-xxl-4 col-md-6">
+          <div class="card info-card sales-card">
 
-                <div class="card-body">
-                  <h5 class="card-title">Pesanan <span>| Semua waktu</span></h5>
+            <div class="card-body">
+              <h5 class="card-title">Pesanan <span>| Semua waktu</span></h5>
 
-                  <div class="d-flex align-items-center">
-                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                      <i class="bi bi-basket"></i> <!-- Ikon keranjang belanja -->
-                    </div>
-                    <div class="ps-3">
-                      <h6>145</h6>
-                     
-                    </div>
-                  </div>
+              <div class="d-flex align-items-center">
+                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                  <i class="bi bi-basket"></i> <!-- Ikon keranjang belanja -->
                 </div>
+                <div class="ps-3">
+                  <h6>145</h6>
 
-              </div>
-            </div><!-- End Sales Card -->
-
-            <!-- Revenue Card -->
-            <div class="col-xxl-4 col-md-6">
-              <div class="card info-card revenue-card">
-
-                <div class="card-body">
-                  <h5 class="card-title">Pendapatan <span>| Hari ini</span></h5>
-
-                  <div class="d-flex align-items-center">
-                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                      <i class="bi bi-currency-dollar"></i>
-                    </div>
-                    <div class="ps-3">
-                      <h6>Rp. 32.555</h6>
-
-                    </div>
-                  </div>
                 </div>
-
               </div>
-            </div><!-- End Revenue Card -->
-</div>
+            </div>
 
           </div>
-        </div><!-- End Left side columns -->
+        </div><!-- End Sales Card -->
+
+        <!-- Revenue Card -->
+        <div class="col-xxl-4 col-md-6">
+          <div class="card info-card revenue-card">
+
+            <div class="card-body">
+              <h5 class="card-title">Pendapatan <span>| Hari ini</span></h5>
+
+              <div class="d-flex align-items-center">
+                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                  <i class="bi bi-currency-dollar"></i>
+                </div>
+                <div class="ps-3">
+                  <h6>Rp. 32.555</h6>
+
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div><!-- End Revenue Card -->
+      </div>
+
+      </div>
+      </div><!-- End Left side columns -->
 
       </div>
     </section>
@@ -238,7 +255,7 @@
       <!-- Licensing information: https://bootstrapmade.com/license/ -->
       <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
       Designed by <a href="https://www.instagram.com/arletaamaya?igsh=ejZ5ZHVndXBpeGNw"
-      target="_blank">Arleta</a>
+        target="_blank">Arleta</a>
     </div>
   </footer><!-- End Footer -->
 

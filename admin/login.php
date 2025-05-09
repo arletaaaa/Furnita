@@ -1,5 +1,22 @@
 <?php
 session_start();
+include "koneksi.php";
+
+// Cek apakah sudah login
+if (!isset($_SESSION["login"])) {
+  header("Location: login.php");
+  exit;
+}
+
+// Cek apakah status tersedia dan pastikan user adalah admin
+if (!isset($_SESSION["status"]) || $_SESSION["status"] !== "admin") {
+  echo "<script>alert('Akses ditolak! Halaman ini hanya untuk Admin.'); window.location.href='login.php'</script>";
+  exit;
+}
+?>
+
+<?php
+session_start();
 require "koneksi.php";
 
 if (isset($_POST["LOGIN"])) {
@@ -95,8 +112,8 @@ if (isset($_POST["LOGIN"])) {
 
                     <div class="col-12">
                       <label for="yourUsername" class="form-label">Username</label>
-                        <input type="text" name="username" class="form-control" id="yourUsername" required>
-                      </div>
+                      <input type="text" name="username" class="form-control" id="yourUsername" required>
+                    </div>
 
                     <div class="col-12">
                       <label for="yourPassword" class="form-label">Password</label>
