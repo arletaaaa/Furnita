@@ -115,9 +115,9 @@
       </li><!-- End Produk Page Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="keranjang.php">
-          <i class="bi bi-envelope"></i>
-          <span>Keranjang</span>
+        <a class="nav-link collapsed" href="pengguna.php">
+          <i class="bi bi-people"></i>
+          <span>Pengguna</span>
         </a>
       </li><!-- End Keranjang Page Nav -->
 
@@ -136,9 +136,9 @@
       </li><!-- End Laporan Page Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="pengguna.php">
-        <i class="bi bi-person"></i>
-          <span>Pengguna</span>
+        <a class="nav-link collapsed" href="keranjang.php">
+        <i class="bi bi-cart"></i>
+          <span>Keranjang</span>
         </a>
       </li><!-- End Pengguna Page Nav -->
 
