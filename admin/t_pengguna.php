@@ -231,10 +231,10 @@ if (isset($_POST['simpan'])) {
     <!-- ======= Footer ======= -->
     <footer id="footer" class="footer">
         <div class="copyright">
-            &copy; Copyright <strong><span>Nama Website</span></strong>. All Rights Reserved
+            &copy; Copyright <strong><span>Furnita</span></strong>. All Rights Reserved
         </div>
         <div class="credits">
-            Designed by <a href="link ig">Nama Kalian</a>
+            Designed by <a href="https://www.instagram.com/arletaamaya?igsh=ejZ5ZHVndXBpeGNw">Arleta</a>
         </div>
     </footer><!-- End Footer -->
 
