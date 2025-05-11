@@ -79,7 +79,7 @@ if (!isset($_SESSION["status"]) || $_SESSION["status"] !== "admin") {
 
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
             <li class="dropdown-header">
-              <h6><?php echo isset($_SESSION['username']) ? htmlspecialchars($_SESSION['username']) : 'Guest' ?></h6>
+              <h6><?php echo isset($_SESSION['username']) ? htmlspecialchars($_SESSION['username']) : 'Guest'; ?></h6>
               <span>Admin</span>
             </li>
             <li>
@@ -190,8 +190,8 @@ if (!isset($_SESSION["status"]) || $_SESSION["status"] !== "admin") {
           </div>
         </div>
       </div>
+    </div><!-- End Welcome Card -->
 
-      </div><!-- End Welcome Card -->
       <div class="row">
         <!-- Sales Card -->
         <div class="col-xxl-4 col-md-6">
