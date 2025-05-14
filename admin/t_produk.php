@@ -119,16 +119,9 @@ if (isset($_POST['simpan'])) {
 
                     <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
                         <li class="dropdown-header">
-                            <h6><?php echo isset($_SESSION['username']) ? htmlspecialchars($_SESSION['username']) : 'Guest' ?></h6>
+                            <h6><?php echo isset($_SESSION['username']) ? htmlspecialchars($_SESSION['username']) : 'Guest';?></h6>
                             <span>Admin</span>
                         </li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-
                         <li>
                             <a class="dropdown-item d-flex align-items-center" href="logout.php">
                                 <i class="bi bi-box-arrow-right"></i>
@@ -171,9 +164,9 @@ if (isset($_POST['simpan'])) {
             </li><!-- End Produk Page Nav -->
 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="pengguna.php">
-                    <i class="bi bi-people"></i>
-                    <span>Pengguna</span>
+                <a class="nav-link collapsed" href="keranjang.php">
+                    <i class="bi bi-cart"></i>
+                    <span>Keranjang</span>
                 </a>
             </li><!-- End Keranjang Page Nav -->
 
@@ -186,14 +179,14 @@ if (isset($_POST['simpan'])) {
 
             <li class="nav-item">
                 <a class="nav-link collapsed" href="laporan.php">
-                    <i class="bi bi-file-earmark-bar-graph"></i>
+                    <i class="bi bi-box-arrow-in-right"></i>
                     <span>Laporan</span>
                 </a>
             </li><!-- End Laporan Page Nav -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="keranjang.php">
-                    <i class="bi bi-cart"></i>
-                    <span>Keranjang</span>
+                <a class="nav-link collapsed" href="pengguna.php">
+                    <i class="bi bi-people"></i>
+                    <span>Pengguna</span>
                 </a>
             </li><!-- End Pengguna Page Nav -->
         </ul>

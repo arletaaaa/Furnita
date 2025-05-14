@@ -13,10 +13,6 @@ if (!isset($_SESSION["status"]) || $_SESSION["status"] !== "admin") {
   echo "<script>alert('Akses ditolak! Halaman ini hanya untuk Admin.'); window.location.href='login.php'</script>";
   exit;
 }
-?>
-
-<?php
-include "koneksi.php";
 if (isset($_POST['simpan'])) {
   $auto = mysqli_query($koneksi, "select max(id_kategori) as max_code from tb_kategori");
   $hasil = mysqli_fetch_array($auto);
@@ -103,15 +99,8 @@ if (isset($_POST['simpan'])) {
 
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
             <li class="dropdown-header">
-              <h6><?php echo isset($_SESSION['username']) ? htmlspecialchars($_SESSION['username']) : 'Guest' ?></h6>
+              <h6><?php echo isset($_SESSION['username']) ? htmlspecialchars($_SESSION['username']) : 'Guest';?></h6>
               <span>Admin</span>
-            </li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-
-            <li>
-              <hr class="dropdown-divider">
             </li>
 
             <li>
@@ -135,7 +124,7 @@ if (isset($_POST['simpan'])) {
     <ul class="sidebar-nav" id="sidebar-nav">
 
       <li class="nav-item">
-        <a class="nav-link " href="index.php">
+        <a class="nav-link collapsed" href="index.php">
           <i class="bi bi-house-door"></i>
           <span>Beranda</span>
         </a>
@@ -157,7 +146,7 @@ if (isset($_POST['simpan'])) {
 
       <li class="nav-item">
         <a class="nav-link collapsed" href="keranjang.php">
-          <i class="bi bi-envelope"></i>
+          <i class="bi bi-cart"></i>
           <span>Keranjang</span>
         </a>
       </li><!-- End Keranjang Page Nav -->
@@ -178,7 +167,7 @@ if (isset($_POST['simpan'])) {
 
       <li class="nav-item">
         <a class="nav-link collapsed" href="pengguna.php">
-          <i class="bi bi-person"></i>
+          <i class="bi bi-people"></i>
           <span>Pengguna</span>
         </a>
       </li><!-- End Pengguna Page Nav -->

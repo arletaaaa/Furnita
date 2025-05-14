@@ -141,9 +141,9 @@ if (!isset($_SESSION["status"]) || $_SESSION["status"] !== "admin") {
       </li><!-- End Produk Page Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="pengguna.php">
-          <i class="bi bi-people"></i>
-          <span>Pengguna</span>
+        <a class="nav-link collapsed" href="keranjang.php">
+          <i class="bi bi-cart"></i>
+          <span>Keranjang</span>
         </a>
       </li><!-- End Keranjang Page Nav -->
 
@@ -162,9 +162,9 @@ if (!isset($_SESSION["status"]) || $_SESSION["status"] !== "admin") {
       </li><!-- End Laporan Page Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="keranjang.php">
-          <i class="bi bi-cart"></i>
-          <span>Keranjang</span>
+        <a class="nav-link collapsed" href="pengguna.php">
+          <i class="bi bi-people"></i>
+          <span>Pengguna</span>
         </a>
       </li><!-- End Pengguna Page Nav -->
 
@@ -235,10 +235,10 @@ if (!isset($_SESSION["status"]) || $_SESSION["status"] !== "admin") {
                       <tr>
                         <td><?php echo $no++; ?></td>
                         <td><?php echo $hasil['nm_kategori']; ?></td>
-                        <td><a href="e_kategori.php?id=<?php echo $hasil["id_kategori"]; ?>" class="btn btn-warning">
+                        <td><a href="e_kategori.php?id=<?php echo $hasil['id_kategori']; ?>" class="btn btn-warning">
                             <i class="bi bi-pencil-square"></i>
                           </a>
-                          <a href="h_kategori.php?id=<?php echo $hasil["id_kategori"]; ?>" class="btn btn-danger" onclick="return confirm ('Apakah Anda Yakin ingin Menghapus Data?')">
+                          <a href="h_kategori.php?id=<?php echo $hasil['id_kategori']; ?>" class="btn btn-danger" onclick="return confirm ('Apakah Anda Yakin ingin Menghapus Data?')">
                             <i class="bi bi-trash"></i>
                           </a>
                         </td>

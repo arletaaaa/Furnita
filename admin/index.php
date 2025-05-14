@@ -87,10 +87,6 @@ if (!isset($_SESSION["status"]) || $_SESSION["status"] !== "admin") {
             </li>
 
             <li>
-              <hr class="dropdown-divider">
-            </li>
-
-            <li>
               <a class="dropdown-item d-flex align-items-center" href="logout.php">
                 <i class="bi bi-box-arrow-right"></i>
                 <span>Sign Out</span>
@@ -132,9 +128,9 @@ if (!isset($_SESSION["status"]) || $_SESSION["status"] !== "admin") {
       </li><!-- End Produk Page Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="pengguna.php">
-          <i class="bi bi-people"></i>
-          <span>Pengguna</span>
+        <a class="nav-link collapsed" href="keranjang.php">
+          <i class="bi bi-cart"></i>
+          <span>Keranjang</span>
         </a>
       </li><!-- End Keranjang Page Nav -->
 
@@ -153,9 +149,9 @@ if (!isset($_SESSION["status"]) || $_SESSION["status"] !== "admin") {
       </li><!-- End Laporan Page Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="keranjang.php">
-          <i class="bi bi-cart"></i>
-          <span>Keranjang</span>
+        <a class="nav-link collapsed" href="pengguna.php">
+          <i class="bi bi-people"></i>
+          <span>Pengguna</span>
         </a>
       </li><!-- End Pengguna Page Nav -->
 
@@ -185,14 +181,24 @@ if (!isset($_SESSION["status"]) || $_SESSION["status"] !== "admin") {
               <h4 class="mb-2">Selamat datang di Website Admin
                 <strong>Furnita!</strong>
               </h4>
-              <p class="text-muted small mb-0">Kelola produk, transaksi, dan pelanggan dengan mudah</p>
+              <p class="text-muted small mb-0">Kelola produk, transaksi, dan pelanggan dengan mudah.</p>
             </div>
           </div>
         </div>
       </div>
     </div><!-- End Welcome Card -->
 
-      <div class="row">
+    <?php
+    //Koneksi ke database
+    include 'koneksi.php'; //Sesuaikan dengan file koneksi yang kamu gunakan
+
+    //Ambil total jumlah pesanan dari tabel tb_pesanan
+    $query = "SELECT COUNT(*) AS total_pesanan FROM tb_jual";
+    $result = mysqli_query($koneksi, $query);
+    $data = mysqli_fetch_assoc($result);
+    $totalPesanan = $data['total_pesanan'] ?? 0; //Default ke 0 jika tidak ada pesanan
+    ?>
+
         <!-- Sales Card -->
         <div class="col-xxl-4 col-md-6">
           <div class="card info-card sales-card">
@@ -205,7 +211,7 @@ if (!isset($_SESSION["status"]) || $_SESSION["status"] !== "admin") {
                   <i class="bi bi-basket"></i> <!-- Ikon keranjang belanja -->
                 </div>
                 <div class="ps-3">
-                  <h6>145</h6>
+                  <h6><?php echo $totalPesanan; ?></h6>
 
                 </div>
               </div>
@@ -213,6 +219,19 @@ if (!isset($_SESSION["status"]) || $_SESSION["status"] !== "admin") {
 
           </div>
         </div><!-- End Sales Card -->
+
+        <?php
+        include 'koneksi.php';
+
+        //Ambil tanggal hari ini
+        $tanggalHariIni = date("Y-m-d");
+
+        //Query langsung ke tb_jual berdasarkan tanggal hari ini
+        $query = "SELECT SUM(total) AS total_revenue FROM tb_jual WHERE DATE(tgl_jual) = '$tanggalHariIni'";
+        $result = mysqli_query($koneksi, $query);
+        $data = mysqli_fetch_assoc($result);
+        $totalRevenue = $data['total_revenue'] ?? 0; //Default ke 0 jika tidak ada pesanan
+        ?>
 
         <!-- Revenue Card -->
         <div class="col-xxl-4 col-md-6">
@@ -226,7 +245,7 @@ if (!isset($_SESSION["status"]) || $_SESSION["status"] !== "admin") {
                   <i class="bi bi-currency-dollar"></i>
                 </div>
                 <div class="ps-3">
-                  <h6>Rp. 32.555</h6>
+                  <h6>Rp<?php echo number_format($totalRevenue, 0, ',', '.'); ?></h6>
 
                 </div>
               </div>
