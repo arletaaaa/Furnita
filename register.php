@@ -1,31 +1,11 @@
 <?php
-session_start();
 
-require "admin/koneksi.php";
+require 'admin/koneksi.php';
+require 'function.php';
+$sql = mysqli_query($koneksi, "select * from tb_user");
+$data = mysqli_fetch_array($sql);
 
-if (isset($_POST["login"])) {
-    $username = $_POST["username"];
-    $password = $_POST["password"];
 
-    $result = mysqli_query($koneksi, "SELECT * FROM tb_user WHERE username='$username'");
-
-    // cek username
-    if (mysqli_num_rows($result) === 1) {
-        // cek password
-        $row = mysqli_fetch_assoc($result);
-        if (password_verify($password, $row["password"])) {
-            // set session
-            $_SESSION["login"] = true;
-            $_SESSION["username"] = $row["username"];
-            $_SESSION["id_user"] = $row["id_user"];
-            header("refresh:0, index.php");
-        } else {
-            echo "<script>alert('Username atau password yang anda masukkan salah')</script>";
-        }
-    } else {
-        echo "<script>alert('Username atau password yang anda masukkan salah')</script>";
-    }
-}
 ?>
 
 <!doctype html>
@@ -35,7 +15,7 @@ if (isset($_POST["login"])) {
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Login - Furnita</title>
+    <title>Register - Furnita</title>
     <link rel="icon" href="img/favicon.png">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="css/bootstrap.min.css">
@@ -57,6 +37,18 @@ if (isset($_POST["login"])) {
 </head>
 
 <body>
+    <?php
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        if (registrasi($_POST)) {
+            echo "<script>alert('User baru berhasil ditambahkan');";
+            echo "window.location.href = 'login.php';</script>";
+            exit;
+        } else {
+            echo "<script>alert('Registrasi gagal');</script>";
+        }
+    }
+    ?>
+
     <!-- breadcrumb start-->
     <section class="breadcrumb breadcrumb_bg">
         <div class="container">
@@ -64,7 +56,7 @@ if (isset($_POST["login"])) {
                 <div class="col-lg-8">
                     <div class="breadcrumb_iner">
                         <div class="breadcrumb_iner_item">
-                            <h2>Login</h2>
+                            <h2>Daftar Sekarang</h2>
                         </div>
                     </div>
                 </div>
@@ -73,35 +65,38 @@ if (isset($_POST["login"])) {
     </section>
     <!-- breadcrumb start-->
 
-    <!--================login_part Area =================-->
+    <!--================register_part Area =================-->
     <section class="login_part padding_top">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-6 col-md-6">
                     <div class="login_part_text text-center">
                         <div class="login_part_text_iner">
-                            <h2>Belum Punya Akun di Furnita?</h2>
-                            <p>Temukan berbagai pilihan furniture berkualitas untuk hunian Anda.
-                                Nikmati penawaran menarik dan pengalaman berbelanja yang mudah.</p>
-                            <a href="register.php" class="btn_3">Daftar Sekarang</a>
+                            <h2>Sudah Punya Akun di Furnita?</h2>
+                            <p>Masuk sekarang dan nikmati pengalaman berbelanja furniture terbaik dengan
+                                penawaran menarik serta kemudahan transaksi.</p>
+                            <a href="login.php" class="btn_3">Masuk Sekarang</a>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-6">
                     <div class="login_part_form">
                         <div class="login_part_form_iner">
-                            <h3>Selamat Datang Kembali! <br>
-                                Silakan Masuk untuk Melanjutkan</h3>
+                            <h3>Buat Akun Baru <br>
+                                Bergabung dengan Furnita Sekarang!</h3>
                             <form class="row contact_form" action="#" method="post">
                                 <div class="col-md-12 form-group p_star">
-                                    <input type="text" class="form-control" id="name" name="username" value="" placeholder="Username">
+                                    <input type="text" class="form-control" id="username" name="username" placeholder="Username">
                                 </div>
                                 <div class="col-md-12 form-group p_star">
-                                    <input type="password" class="form-control" id="password" name="password" value="" placeholder="Password">
+                                    <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+                                </div>
+                                <div class="col-md-12 form-group p_star">
+                                    <input type="password" class="form-control" id="confirm_password" name="password2" placeholder="Konfirmasi Password">
                                 </div>
                                 <div class="col-md-12 form-group">
-                                    <button type="submit" value="submit" class="btn_3" name="login">
-                                        log in
+                                    <button type="submit" value="submit" class="btn_3" name="register">
+                                        Daftar Sekarang
                                     </button>
                                 </div>
                             </form>
@@ -111,7 +106,7 @@ if (isset($_POST["login"])) {
             </div>
         </div>
     </section>
-    <!--================login_part end =================-->
+    <!--================register_part end =================-->
 
     <!--::footer_part start::-->
     <footer class="footer_part">
