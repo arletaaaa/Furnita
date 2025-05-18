@@ -22,7 +22,7 @@ if (!isset($_SESSION["status"]) || $_SESSION["status"] !== "admin") {
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>Produk - furnita1 Admin</title>
+    <title>Produk - Furnita Admin</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
 
@@ -71,7 +71,7 @@ if (!isset($_SESSION["status"]) || $_SESSION["status"] !== "admin") {
 
                     <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
                         <li class="dropdown-header">
-                            <h6><?php echo isset($_SESSION['username']) ? htmlspecialchars($_SESSION['username']) : 'Guest';?></h6>
+                            <h6><?php echo isset($_SESSION['username']) ? htmlspecialchars($_SESSION['username']) : 'Guest'; ?></h6>
                             <span>Admin</span>
                         </li>
 
@@ -152,8 +152,7 @@ if (!isset($_SESSION["status"]) || $_SESSION["status"] !== "admin") {
             <nav>
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="index.php">Beranda</a></li>
-                    <li class="breadcrumb-item">Produk</li>
-                    <li class="breadcrumb-item active">Edit</li>
+                    <li class="breadcrumb-item active">Produk</li>
                 </ol>
             </nav>
         </div><!-- End Page Title -->
@@ -177,7 +176,6 @@ if (!isset($_SESSION["status"]) || $_SESSION["status"] !== "admin") {
 
                     <div class="card">
                         <div class="card-body">
-
                             <!-- Table with stripped rows -->
                             <table class="table table-striped mt-2">
                                 <thead>
@@ -187,7 +185,7 @@ if (!isset($_SESSION["status"]) || $_SESSION["status"] !== "admin") {
                                         <th scope="col">Harga</th>
                                         <th scope="col">Stok</th>
                                         <th scope="col">Deskripsi</th>
-                                        <th scope="col">Nama Kategori</th>
+                                        <th scope="col">Kategori</th>
                                         <th scope="col">Gambar</th>
                                         <th scope="col">Aksi</th>
                                     </tr>

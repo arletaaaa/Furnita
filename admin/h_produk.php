@@ -35,5 +35,4 @@ if (isset($_GET['id'])) {
     echo "<script>alert('Akses tidak valid!')</script>";
     header("refresh:0, produk.php");
 }
-
 ?>

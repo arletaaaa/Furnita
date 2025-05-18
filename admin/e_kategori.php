@@ -4,7 +4,7 @@ $id = $_GET['id'];
 $sql = mysqli_query($koneksi, "SELECT * FROM tb_kategori WHERE id_kategori = '$id'");
 $data = mysqli_fetch_array($sql);
 
-if (isset($_POST['simpan'])) {
+if (isset($_POST['update'])) {
   $nm_kategori = $_POST['nm_kategori'];
 
   $query = mysqli_query($koneksi, "UPDATE tb_kategori SET nm_kategori = '$nm_kategori' WHERE id_kategori = '$id'");
@@ -25,7 +25,7 @@ if (isset($_POST['simpan'])) {
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Kategori Produk - furnita1 Admin</title>
+  <title>Kategori Produk - Furnita Admin</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -107,7 +107,7 @@ if (isset($_POST['simpan'])) {
     <ul class="sidebar-nav" id="sidebar-nav">
 
       <li class="nav-item">
-        <a class="nav-link " href="index.php">
+        <a class="nav-link collapsed" href="index.php">
           <i class="bi bi-house-door"></i>
           <span>Beranda</span>
         </a>
@@ -186,8 +186,8 @@ if (isset($_POST['simpan'])) {
                   <input type="text" class="form-control" id="nm_kategori" name="nm_kategori" placeholder="Masukkan Nama Kategori Produk" value="<?php echo $data['nm_kategori']; ?>">
                 </div>
                 <div class="text-center">
-                  <button type="reset" class="btn btn-secondary">Reset</button>
-                  <button type="submit" class="btn btn-primary" name="simpan">Simpan</button>
+                  <button type="submit" class="btn btn-primary" name="update">Update</button>
+                  <a href="kategori.php" class="btn btn-secondary">Kembali</a>
                 </div>
               </form>
             </div>

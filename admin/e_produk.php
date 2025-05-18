@@ -80,7 +80,7 @@ if (isset($_POST['update'])) {
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>Produk - furnita1 Admin</title>
+    <title>Produk - Furnita Admin</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
 
@@ -263,8 +263,8 @@ if (isset($_POST['update'])) {
                                     <?php } ?>
                                 </div>
                                 <div class="text-center">
-                                    <button type="reset" class="btn btn-secondary">Reset</button>
-                                    <button type="submit" class="btn btn-primary" name="update">Simpan</button>
+                                    <button type="submit" class="btn btn-primary" name="update">Update</button>
+                                    <a href="produk.php" class="btn btn-secondary">Kembali</a>
                                 </div>
                             </form>
 

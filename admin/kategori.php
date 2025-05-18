@@ -22,7 +22,7 @@ if (!isset($_SESSION["status"]) || $_SESSION["status"] !== "admin") {
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Kategori Produk - furnita1 Admin</title>
+  <title>Kategori Produk - Furnita Admin</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -127,7 +127,7 @@ if (!isset($_SESSION["status"]) || $_SESSION["status"] !== "admin") {
       </li><!-- End Dashboard Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="kategori.php">
+        <a class="nav-link" href="kategori.php">
           <i class="bi bi-tags"></i>
           <span>Kategori Produk</span>
         </a>
