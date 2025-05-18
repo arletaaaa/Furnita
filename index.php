@@ -139,7 +139,7 @@
                                             <h1>Sofa Ruang Tamu</h1>
                                             <p>Paduan sempurna antara kelembutan kain dan kehangatan kayu. 
                                                 Sofa ini siap menjadi pusat kenyamanan di ruang keluarga Anda.</p>
-                                            <a href="#" class="btn_2">buy now</a>
+                                            <a href="belanja.php?id_kategori=K001" class="btn_2">buy now</a>
                                         </div>
                                     </div>
                                 </div>
