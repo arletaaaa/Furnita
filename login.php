@@ -81,8 +81,8 @@ if (isset($_POST["login"])) {
                     <div class="login_part_text text-center">
                         <div class="login_part_text_iner">
                             <h2>Belum Punya Akun di Furnita?</h2>
-                            <p>Temukan berbagai pilihan furniture berkualitas untuk hunian Anda.
-                                Nikmati penawaran menarik dan pengalaman berbelanja yang mudah.</p>
+                            <p>Jelajahi ragam furniture premium untuk mempercantik rumah impian Anda. 
+                                Dapatkan penawaran istimewa dan kemudahan berbelanja sekarang!</p>
                             <a href="register.php" class="btn_3">Daftar Sekarang</a>
                         </div>
                     </div>

@@ -73,8 +73,8 @@ $data = mysqli_fetch_array($sql);
                     <div class="login_part_text text-center">
                         <div class="login_part_text_iner">
                             <h2>Sudah Punya Akun di Furnita?</h2>
-                            <p>Masuk sekarang dan nikmati pengalaman berbelanja furniture terbaik dengan
-                                penawaran menarik serta kemudahan transaksi.</p>
+                            <p>Kunjungi sekarang dan rasakan kemudahan berbelanja furniture berkualitas tinggi 
+                                dengan berbagai penawaran istimewa dan proses transaksi yang praktis.</p>
                             <a href="login.php" class="btn_3">Masuk Sekarang</a>
                         </div>
                     </div>
