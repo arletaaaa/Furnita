@@ -81,7 +81,7 @@ if (isset($_POST["login"])) {
                     <div class="login_part_text text-center">
                         <div class="login_part_text_iner">
                             <h2>Belum Punya Akun di Furnita?</h2>
-                            <p>Jelajahi ragam furniture premium untuk mempercantik rumah impian Anda. 
+                            <p>Jelajahi ragam furniture premium untuk mempercantik rumah impian Anda.
                                 Dapatkan penawaran istimewa dan kemudahan berbelanja sekarang!</p>
                             <a href="register.php" class="btn_3">Daftar Sekarang</a>
                         </div>
@@ -90,8 +90,7 @@ if (isset($_POST["login"])) {
                 <div class="col-lg-6 col-md-6">
                     <div class="login_part_form">
                         <div class="login_part_form_iner">
-                            <h3>Selamat Datang Kembali! <br>
-                                Silakan Masuk untuk Melanjutkan</h3>
+                            <h3>Selamat Datang Kembali! <br> Silakan Masuk untuk Melanjutkan</h3>
                             <form class="row contact_form" action="#" method="post">
                                 <div class="col-md-12 form-group p_star">
                                     <input type="text" class="form-control" id="name" name="username" value="" placeholder="Username">
@@ -100,9 +99,7 @@ if (isset($_POST["login"])) {
                                     <input type="password" class="form-control" id="password" name="password" value="" placeholder="Password">
                                 </div>
                                 <div class="col-md-12 form-group">
-                                    <button type="submit" value="submit" class="btn_3" name="login">
-                                        log in
-                                    </button>
+                                    <button type="submit" value="submit" class="btn_3" name="login">log in</button>
                                 </div>
                             </form>
                         </div>
@@ -138,7 +135,7 @@ if (isset($_POST["login"])) {
                             <P><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                                 Copyright &copy;<script>
                                     document.write(new Date().getFullYear());
-                                </script> All rights reserved | Furnita by <a href="#" target="_blank">Arleta</a>
+                                </script> All rights reserved | Furnita by <a href="https://www.instagram.com/arletaamaya?igsh=ejZ5ZHVndXBpeGNw" target="_blank">Arleta</a>
                                 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></P>
                         </div>
                     </div>

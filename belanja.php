@@ -28,7 +28,7 @@
     <!-- style CSS -->
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-    <style>
+    <style>  
         .single_product_item {
             text-align: center;
             padding: 15px;
