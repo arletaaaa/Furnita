@@ -101,7 +101,7 @@ if (isset($_POST["login"])) {
                                         placeholder="Password">
                                 </div>
                                 <div class="col-md-12 form-group">
-                                    <button type="submit" value="submit" class="btn_3">
+                                    <button type="submit" value="submit" class="btn_3" name="login">
                                         login
                                     </button>
                                 </div>
