@@ -9,12 +9,12 @@ if (isset($_POST["login"])) {
 
     $result = mysqli_query($koneksi, "SELECT * FROM tb_user WHERE username='$username'");
 
-    // cek username
+    // Cek username
     if (mysqli_num_rows($result) === 1) {
-        // cek password
+        // Cek password
         $row = mysqli_fetch_assoc($result);
         if (password_verify($password, $row["password"])) {
-            // set session
+            // Set session
             $_SESSION["login"] = true;
             $_SESSION["username"] = $row["username"];
             $_SESSION["id_user"] = $row["id_user"];
@@ -35,7 +35,7 @@ if (isset($_POST["login"])) {
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Login - Furnita</title>
+    <title>Furnita</title>
     <link rel="icon" href="img/favicon.png">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="css/bootstrap.min.css">
@@ -80,9 +80,8 @@ if (isset($_POST["login"])) {
                 <div class="col-lg-6 col-md-6">
                     <div class="login_part_text text-center">
                         <div class="login_part_text_iner">
-                            <h2>Belum Punya Akun di Furnita?</h2>
-                            <p>Jelajahi ragam furniture premium untuk mempercantik rumah impian Anda.
-                                Dapatkan penawaran istimewa dan kemudahan berbelanja sekarang!</p>
+                            <h2>Belum Punya Akun di Furnita ?</h2>
+                            <p>Temukan berbagai pilihan furniture berkualitas untuk hunian Anda. Nikmati penawaran menarik dan pengalaman berbelanja yang mudah</p>
                             <a href="register.php" class="btn_3">Daftar Sekarang</a>
                         </div>
                     </div>
@@ -90,16 +89,21 @@ if (isset($_POST["login"])) {
                 <div class="col-lg-6 col-md-6">
                     <div class="login_part_form">
                         <div class="login_part_form_iner">
-                            <h3>Selamat Datang Kembali! <br> Silakan Masuk untuk Melanjutkan</h3>
+                            <h3>Selamat Datang Kembali ! <br>
+                                Silakan Masuk untuk Melanjutkan</h3>
                             <form class="row contact_form" action="#" method="post">
                                 <div class="col-md-12 form-group p_star">
-                                    <input type="text" class="form-control" id="name" name="username" value="" placeholder="Username">
+                                    <input type="text" class="form-control" id="name" name="username" value=""
+                                        placeholder="Username">
                                 </div>
                                 <div class="col-md-12 form-group p_star">
-                                    <input type="password" class="form-control" id="password" name="password" value="" placeholder="Password">
+                                    <input type="password" class="form-control" id="password" name="password" value=""
+                                        placeholder="Password">
                                 </div>
                                 <div class="col-md-12 form-group">
-                                    <button type="submit" value="submit" class="btn_3" name="login">log in</button>
+                                    <button type="submit" value="submit" class="btn_3">
+                                        login
+                                    </button>
                                 </div>
                             </form>
                         </div>
@@ -114,18 +118,12 @@ if (isset($_POST["login"])) {
     <footer class="footer_part">
         <div class="container">
             <div class="row justify-content-around">
-                <div class="col-sm-6 col-lg-2">
-                </div>
-                <div class="col-sm-6 col-lg-2">
-                </div>
-                <div class="col-sm-6 col-lg-2">
-                </div>
-                <div class="col-sm-6 col-lg-2">
-                </div>
-                <div class="col-sm-6 col-lg-4">
-                </div>
+                <div class="col-sm-6 col-lg-2"></div>
+                <div class="col-sm-6 col-lg-2"></div>
+                <div class="col-sm-6 col-lg-2"></div>
+                <div class="col-sm-6 col-lg-2"></div>
+                <div class="col-sm-6 col-lg-4"></div>
             </div>
-
         </div>
         <div class="copyright_part">
             <div class="container">
@@ -133,10 +131,8 @@ if (isset($_POST["login"])) {
                     <div class="col-lg-8">
                         <div class="copyright_text">
                             <P><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                                Copyright &copy;<script>
-                                    document.write(new Date().getFullYear());
-                                </script> All rights reserved | Furnita by <a href="https://www.instagram.com/arletaamaya?igsh=ejZ5ZHVndXBpeGNw" target="_blank">Arleta</a>
-                                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></P>
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="ti-heart" aria-hidden="true"></i> by <a href="https://www.instagram.com/arletaamaya?igsh=ejZ5ZHVndXBpeGNw" target="_blank">Arleta</a>
+<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></P>
                         </div>
                     </div>
                     <div class="col-lg-4">
