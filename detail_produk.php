@@ -32,12 +32,10 @@
       <div class="row align-items-center">
         <div class="col-lg-12">
           <nav class="navbar navbar-expand-lg navbar-light">
-            <a class="navbar-brand" href="index.html">
+            <a class="navbar-brand mx-auto" href="index.php">
               <h1 class="m-0">Furnita</h1>
             </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse"
-              data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-              aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span class="menu_icon"><i class="fas fa-bars"></i></span>
             </button>
 
@@ -54,20 +52,48 @@
                 </li>
               </ul>
             </div>
-            <div class="hearer_icon d-flex">
-              <div class="dropdown cart">
-                <a class="dropdown-toggle" href="#" id="navbarDropdown3" role="button"
-                  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <i class="fas fa-cart-plus"></i>
+            <?php session_start(); ?>
+            <?php if (isset($_SESSION['username'])) : ?>
+              <div class="header_icon d-flex">
+                <!-- Cart Link -->
+                <?php
+                include 'admin/koneksi.php';
+
+                $user_id = isset($_SESSION['id_user']) ? $_SESSION['id_user'] : null;
+
+                if ($user_id) {
+                  $query = "SELECT COUNT(*) as total FROM tb_pesanan WHERE id_user = '$user_id'";
+                  $result = mysqli_query($koneksi, $query);
+                  $data = mysqli_fetch_assoc($result);
+                  $jumlah_item = isset($data['total']) ? $data['total'] : 0;
+                } else {
+                  $jumlah_item = 0;
+                }
+                ?>
+
+                <a href="cart.php" id="cartLink" style="position: relative; display: inline-block;">
+                  <i class="fas fa-cart-plus" style="font-size: 16px;"></i>
+                  <span class="cart-badge"><?= $jumlah_item ?></span>
                 </a>
-                <!-- <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <div class="single_product">
 
-                                </div>
-                            </div> -->
-
+                <!-- User Dropdown -->
+                <div class="dropdown user">
+                  <a class="dropdown-toggle d-flex align-items-center" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fas fa-user"></i>
+                    <span class="ml-2 text-dark"><?= htmlspecialchars($_SESSION['username']); ?></span> <!-- Menampilkan username dari session -->
+                  </a>
+                  <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+                    <a class="dropdown-item" href="logout.php">Logout</a>
+                  </div>
+                </div>
               </div>
-            </div>
+
+
+            <?php else : ?>
+              <!-- Login Button -->
+              <a href="login.php" class="btn btn-primary ml-3 px-3 py-2" style="border-radius: 20px;">Login</a>
+            <?php endif; ?>
+
           </nav>
         </div>
       </div>
@@ -94,40 +120,93 @@
   <!--================End Home Banner Area =================-->
 
   <!--================Single Product Area =================-->
+  <?php
+  include 'admin/koneksi.php';
+
+  //Pastikan ada parameter id_produk yang dikirim dari URL
+  $id_produk = isset($_GET['id']) ? mysqli_real_escape_string($koneksi, $_GET['id']) : '';
+
+  $query = "SELECT p.nm_produk, p.harga, p.stok, p.desk, p.gambar, k.nm_kategori FROM tb_produk p JOIN tb_kategori k ON p.id_kategori = k.id_kategori WHERE p.id_produk = '$id_produk'";
+
+  $result = $koneksi->query($query);
+  $produk = $result->fetch_assoc();
+
+  //Tambahkan pesanan ke database
+  if (isset($_POST['add_to_cart'])) {
+    if (!isset($_SESSION['login'])) {
+      echo "<script>alert('Silakan login terlebih dahulu!'); window.location.href='login.php';</script>";
+    } else {
+      $id_user = $_SESSION['id_user'];
+      $qty = intval($_POST['qty']);
+      $total = $produk['harga'] * $qty;
+
+      //Cek stok langsung dari database (lebih aman)
+      $cek_stok = $koneksi->query("SELECT stok FROM tb_produk WHERE id_produk = '$id_produk'");
+      $data_stok = $cek_stok->fetch_assoc();
+
+      if ($qty > $data_stok['stok']) {
+        echo "<script>alert('Stok tidak mencukupi! Stok tersedia: {$data_stok['stok']}');</script>";
+      } else {
+        //Buat id_pesanan otomatis dengan format P001, P002, dst.
+        $query_id = "SELECT id_pesanan FROM tb_pesanan ORDER BY id_pesanan DESC LIMIT 1";
+        $result_id = $koneksi->query($query_id);
+        if ($result_id->num_rows > 0) {
+          $row = $result_id->fetch_assoc();
+          $last_id = intval(substr($row['id_pesanan'], 1)); //Ambil angka dari id terakhir
+          $new_id = "M" . str_pad($last_id + 1, 3, '0', STR_PAD_LEFT); //Format M001, M002
+        } else {
+          $new_id = "M001"; // Jika belum ada pesanan, mulai dari M001
+        }
+
+        //Simpan ke database
+        $query_insert = "INSERT INTO tb_pesanan (id_pesanan, id_produk, qty, total, id_user) VALUES ('$new_id', '$id_produk', '$qty', '$total', '$id_user')";
+
+        if ($koneksi->query($query_insert) === TRUE) {
+          echo "<script>alert('Produk berhasil ditambahkan ke keranjang!'); window.location.href='belanja.php';</script>";
+        } else {
+          echo "<script>alert('Terjadi kesalahan saat menambahkan ke keranjang!');</script>";
+        }
+      }
+    }
+  }
+  ?>
+
+  <!-- Kode HTML Produk -->
   <div class="product_image_area section_padding">
     <div class="container">
       <div class="row s_product_inner justify-content-between">
         <div class="col-lg-7 col-xl-7">
           <div class="product_slider_img">
             <div id="vertical">
-              <div data-thumb="img/product/single-product/product_1.png">
-                <img src="img/product/single-product/product_1.png" />
+              <div data-thumb="admin/produk_img/<?php echo $produk['gambar']; ?>">
+                <img src="admin/produk_img/<?php echo $produk['gambar']; ?>" style="width: 779px; height: 525px; object-fit: cover;" />
               </div>
             </div>
           </div>
         </div>
         <div class="col-lg-5 col-xl-4">
           <div class="s_product_text">
-            <h3>Faded SkyBlu Denim Jeans</h3>
-            <h2>$149.99</h2>
+            <h3><?php echo $produk['nm_produk']; ?></h3>
+            <h2>Rp <?php echo number_format($produk['harga'], 0, ',', '.'); ?></h2>
             <ul class="list">
               <li>
                 <a class="active" href="#">
-                  <span>Kategori</span> : Household</a>
+                  <span>Kategori</span> : <?php echo $produk['nm_kategori']; ?></a>
               </li>
             </ul>
-            <p>
-              First replenish living. Creepeth image image. Creeping can't, won't called.
-              Two fruitful let days signs sea together all land fly subdue
-            </p>
-            <div class="card_area d-flex justify-content-between align-items-center">
-              <div class="product_count">
-                <span class="inumber-decrement"> <i class="ti-minus"></i></span>
-                <input class="input-number" type="text" value="1" min="0" max="10">
-                <span class="number-increment"> <i class="ti-plus"></i></span>
+            <p><?php echo nl2br($produk['desk']); ?></p>
+
+            <form method="post">
+              <div class="card_area d-flex justify-content-between align-items-center">
+                <div class="product_count">
+                  <span class="inumber-decrement"> <i class="ti-minus"></i></span>
+                  <input class="input-number" type="text" name="qty" value="1" min="1" max="<?php echo $produk['stok']; ?>">
+                  <span class="number-increment"> <i class="ti-plus"></i></span>
+                </div>
+                <button type="submit" name="add_to_cart" class="btn_3">Keranjang</button>
               </div>
-              <a href="#" class="btn_3">Keranjang</a>
-            </div>
+            </form>
+
           </div>
         </div>
       </div>
@@ -135,12 +214,12 @@
   </div>
   <!--================End Single Product Area =================-->
 
-<!--================Product Description Area =================-->
+  <!--================Product Description Area =================-->
   <section class="product_description_area">
     <div class="container">
       <ul class="nav nav-tabs" id="myTab" role="tablist">
         <li class="nav-item">
-          <a class="nav-link" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home"
+          <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home"
             aria-selected="true">Deskripsi</a>
         </li>
         <li class="nav-item">
@@ -149,13 +228,8 @@
         </li>
       </ul>
       <div class="tab-content" id="myTabContent">
-        <div class="tab-pane fade" id="home" role="tabpanel" aria-labelledby="home-tab">
-          <p>
-            Deskripsi
-          </p>
-          <p>
-            Barang
-          </p>
+        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+          <p><?php echo nl2br($produk['desk']); ?></p>
         </div>
         <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
           <div class="table-responsive">
@@ -166,7 +240,7 @@
                     <h5>Stok</h5>
                   </td>
                   <td>
-                    <h5>3</h5>
+                    <h5><?php echo $produk['stok']; ?></h5>
                   </td>
                 </tr>
               </tbody>
@@ -188,16 +262,25 @@
           </div>
         </div>
       </div>
+      <?php
+      //Ambil produk lain dari database, kecuali produk yang sedang dilihat
+      $query_produk_lain = "SELECT id_produk, nm_produk, harga, gambar FROM tb_produk WHERE id_produk != '$id_produk' LIMIT 5";
+      $result_produk_lain = $koneksi->query($query_produk_lain);
+      ?>
+
       <div class="row align-items-center justify-content-between">
         <div class="col-lg-12">
           <div class="best_product_slider owl-carousel">
-            <div class="single_product_item">
-              <img src="img/product/product_1.png" alt="">
-              <div class="single_product_text">
-                <h4>Quartz Belt Watch</h4>
-                <h3>$150.00</h3>
+            <?php while ($produk_lain = $result_produk_lain->fetch_assoc()) { ?>
+              <div class="single_product_item">
+                <img src="admin/produk_img/<?php echo $produk_lain['gambar']; ?>" alt="<?php echo $produk_lain['nm_produk']; ?>" style="width: 200px; height: 210px; object-fit: cover;">
+                <div class="single_product_text">
+                  <h4><?php echo $produk_lain['nm_produk']; ?></h4>
+                  <h3>Rp <?php echo number_format($produk_lain['harga'], 0, ',', '.'); ?></h3>
+                  <a href="detail_produk.php?id=<?php echo $produk_lain['id_produk']; ?>" class="add_cart">Lihat Detail</a>
+                </div>
               </div>
-            </div>
+            <?php } ?>
           </div>
         </div>
       </div>
@@ -219,17 +302,14 @@
               <P><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                 Copyright &copy;<script>
                   document.write(new Date().getFullYear());
-                </script> All rights reserved | This template is made with <i class="ti-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Arleta</a>
+                </script> All rights reserved | This template is made with <i class="ti-heart" aria-hidden="true"></i> by <a href="https://www.instagram.com/arletaamaya?igsh=ejZ5ZHVndXBpeGNw" target="_blank">Arleta</a>
                 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></P>
             </div>
           </div>
           <div class="col-lg-4">
             <div class="footer_icon social_icon">
               <ul class="list-unstyled">
-                <li><a href="#" class="single_social_icon"><i class="fab fa-facebook-f"></i></a></li>
-                <li><a href="#" class="single_social_icon"><i class="fab fa-twitter"></i></a></li>
-                <li><a href="#" class="single_social_icon"><i class="fas fa-globe"></i></a></li>
-                <li><a href="#" class="single_social_icon"><i class="fab fa-behance"></i></a></li>
+                <li><a href="#" class="single_social_icon"><i class="fab fa-instagram"></i></a></li>
               </ul>
             </div>
           </div>
