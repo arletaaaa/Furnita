@@ -75,11 +75,6 @@
                 }
                 ?>
 
-                <a href="detail_produk.php" id="cartLink" style="position: relative; display: inline-block";>
-                  <i class="fas fa-cart-plus" style="font-size: 16px;"></i>
-                  <span class="cart-badge"><?= $jumlah_item ?></span>
-                </a>
-
                 <!-- User Dropdown -->
                 <div class="dropdown user">
                   <a class="dropdown-toggle d-flex align-items-center" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
