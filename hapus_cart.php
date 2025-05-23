@@ -7,7 +7,7 @@ if (!isset($_SESSION['id_user'])) {
     exit;
 }
 
-if (isset($GET['id_pesanan'])) {
+if (isset($_GET['id_pesanan'])) {
     $id_pesanan = $_GET['id_pesanan'];
     $query = "DELETE FROM tb_pesanan WHERE id_pesanan = '$id_pesanan'";
     $result = mysqli_query($koneksi, $query);
@@ -18,6 +18,6 @@ if (isset($GET['id_pesanan'])) {
         echo "Gagal menghapus: " . mysqli_error($koneksi);
     }
 } else {
-    echo "<script>alert('ID pesanan tidak ditemukan'); window.location='keranjang.php';</script>";
+    echo "<script>alert('ID pesanan tidak ditemukan'); window.location='cart.php';</script>";
 }
 ?>
