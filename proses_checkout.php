@@ -100,7 +100,7 @@ foreach ($pesanan_data as $pesanan) {
 }
 
 // Hapus data dari tb_pesanan
-$query_hapus = "DELETE FROM tb_pesanan WHERE id_user = 'id_user'";
+$query_hapus = "DELETE FROM tb_pesanan WHERE id_user = '$id_user'";
 if (!mysqli_query($koneksi, $query_hapus)) {
     die(json_encode(["success" => false, "message" => "Gagal hapus tb_pesanan: " . mysqli_error($koneksi)]));
 }
