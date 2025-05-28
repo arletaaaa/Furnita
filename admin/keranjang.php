@@ -111,14 +111,14 @@ if (!isset($_SESSION["status"]) || $_SESSION["status"] !== "admin") {
             </li><!-- End Kategori Page Nav -->
 
             <li class="nav-item">
-                <a class="nav-link" href="produk.php">
+                <a class="nav-link collapsed" href="produk.php">
                     <i class="bi bi-box2-heart-fill"></i>
                     <span>Produk</span>
                 </a>
             </li><!-- End Produk Page Nav -->
 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="keranjang.php">
+                <a class="nav-link" href="keranjang.php">
                     <i class="bi bi-basket2"></i>
                     <span>Keranjang</span>
                 </a>
@@ -151,7 +151,7 @@ if (!isset($_SESSION["status"]) || $_SESSION["status"] !== "admin") {
     <main id="main" class="main">
 
         <div class="pagetitle">
-            <h1>Produk</h1>
+            <h1>Keranjang</h1>
             <nav>
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="index.php">Beranda</a></li>
