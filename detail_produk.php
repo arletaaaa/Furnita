@@ -59,13 +59,13 @@
                 <?php
                 include 'admin/koneksi.php';
 
-                $user_id = isset($_SESSION['id_user']) ? $_SESSION['id_user'] : null;
+                $user_id = $_SESSION['id_user'] ?? null;
 
                 if ($user_id) {
                   $query = "SELECT COUNT(*) as total FROM tb_pesanan WHERE id_user = '$user_id'";
                   $result = mysqli_query($koneksi, $query);
                   $data = mysqli_fetch_assoc($result);
-                  $jumlah_item = isset($data['total']) ? $data['total'] : 0;
+                  $jumlah_item = $data['total'] ?? 0;
                 } else {
                   $jumlah_item = 0;
                 }

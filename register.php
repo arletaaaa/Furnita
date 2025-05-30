@@ -115,11 +115,6 @@ $data = mysqli_fetch_array($sql);
     <footer class="footer_part">
         <div class="container">
             <div class="row justify-content-around">
-                <div class="col-sm-6 col-lg-2"></div>
-                <div class="col-sm-6 col-lg-2"></div>
-                <div class="col-sm-6 col-lg-2"></div>
-                <div class="col-sm-6 col-lg-2"></div>
-                <div class="col-sm-6 col-lg-4"></div>
             </div>
         </div>
         <div class="copyright_part">

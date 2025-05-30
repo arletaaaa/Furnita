@@ -1,4 +1,4 @@
-<?php 
+<?php
 include 'admin/koneksi.php';
 session_start();
 
@@ -13,8 +13,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['qty'])) {
         if ($jumlah >= 1) {
             // Ambil id_produk dari id_pesanan untuk cek stok
             $query_produk = "SELECT pr.id_produk, pr.stok FROM tb_pesanan p JOIN
-            tb_produk pr ON p.id_produk = pr.id_produk WHERE p.id_pesanan =
-            '$id_pesanan'";
+                            tb_produk pr ON p.id_produk = pr.id_produk WHERE p.id_pesanan =
+                            '$id_pesanan'";
             $res = mysqli_query($koneksi, $query_produk);
             $produk = mysqli_fetch_assoc($res);
 
@@ -31,11 +31,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['qty'])) {
             }
         }
     }
+    echo "<script>alert('Jumlah produk berhasil diperbarui'); window.location.href = 'cart.php';</script>";
+    exit;
 }
-
-echo "<script>
-    alert('Jumlah produk berhasil diperbarui');
-    window.location.href = 'cart.php';
-</script>";
-exit;
-?>

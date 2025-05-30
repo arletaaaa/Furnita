@@ -18,7 +18,8 @@ if (isset($_POST["login"])) {
             $_SESSION["login"] = true;
             $_SESSION["username"] = $row["username"];
             $_SESSION["id_user"] = $row["id_user"];
-            header("refresh:0, index.php");
+            header("Location: index.php");
+            exit();
         } else {
             echo "<script>alert('Username atau password yang anda masukkan salah')</script>";
         }

@@ -11,7 +11,7 @@ $id_user = $_SESSION['id_user'];
 $tgl_jual = date('Y-m-d H:i:s');
 
 //Ambil semua pesanan pengguna
-$query_pesanan = "SELECT *FROM tb_pesanan WHERE id_user = '$id_user'";
+$query_pesanan = "SELECT * FROM tb_pesanan WHERE id_user = '$id_user'";
 $result_pesanan = mysqli_query($koneksi, $query_pesanan);
 
 if (mysqli_num_rows($result_pesanan) == 0) {

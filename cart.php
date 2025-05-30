@@ -28,16 +28,16 @@
   <!-- style CSS -->
   <link rel="stylesheet" href="css/style.css">
   <style>
-  input[type="number"]::-webkit-inner-spin-button,
-  input[type="number"]::-webkit-outer-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-  }
+    input[type="number"]::-webkit-inner-spin-button,
+    input[type="number"]::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
 
-  input[type="number"] {
-    -moz-appearance: textfield;
-  }
-</style>
+    input[type="number"] {
+      -moz-appearance: textfield;
+    }
+  </style>
 </head>
 
 <body>
@@ -74,13 +74,13 @@
                 <?php
                 include 'admin/koneksi.php';
 
-                $user_id = isset($_SESSION['id_user']) ? $_SESSION['id_user'] : null;
+                $user_id = $_SESSION['id_user'] ?? null;
 
                 if ($user_id) {
                   $query = "SELECT COUNT(*) as total FROM tb_pesanan WHERE id_user = '$user_id'";
                   $result = mysqli_query($koneksi, $query);
                   $data = mysqli_fetch_assoc($result);
-                  $jumlah_item = isset($data['total']) ? $data['total'] : 0;
+                  $jumlah_item = $data['total'] ?? 0;
                 } else {
                   $jumlah_item = 0;
                 }
@@ -144,7 +144,11 @@
           }
 
           $id_user = $_SESSION['id_user']; //Ambil user_id dari sesi
-          $query = "SELECT p.id_pesanan, pr.nm_produk, pr.harga, p.qty, (pr.harga * p.qty) AS total, pr.gambar FROM tb_pesanan p JOIN tb_produk pr ON p.id_produk = pr.id_produk JOIN tb_user u ON p.id_user = u.id_user WHERE u.id_user = '$id_user'";
+          $query = "SELECT p.id_pesanan, pr.nm_produk, pr.harga, p.qty, (pr.harga * p.qty) AS total, pr.gambar 
+                    FROM tb_pesanan p 
+                    JOIN tb_produk pr ON p.id_produk = pr.id_produk 
+                    JOIN tb_user u ON p.id_user = u.id_user 
+                    WHERE u.id_user = '$id_user'";
 
           $result = mysqli_query($koneksi, $query);
 
@@ -261,25 +265,24 @@
   </section>
   <script>
     document.addEventListener("DOMContentLoaded", function() {
-      document.getElementById("checkoutBtn").addEventListener("click", function()
-      {
+      document.getElementById("checkoutBtn").addEventListener("click", function() {
         fetch("proses_checkout.php", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify({})
-        })
-        .then(response => response.json())
-        .then(data => {
-          if (data.success) {
-            alert("Checkout berhasil!");
-            window.location.href = "belanja.php"; //Redirect ke halaman riwayat transaksi
-          } else {
-            alert("Gagal checkout: " + data.message);
-          }
-        })
-        .catch(error => console.error("Error:", error));
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify({})
+          })
+          .then(response => response.json())
+          .then(data => {
+            if (data.success) {
+              alert("Checkout berhasil!");
+              window.location.href = "belanja.php"; //Redirect ke halaman riwayat transaksi
+            } else {
+              alert("Gagal checkout: " + data.message);
+            }
+          })
+          .catch(error => console.error("Error:", error));
       });
     });
   </script>

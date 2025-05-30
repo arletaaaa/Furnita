@@ -196,11 +196,11 @@ if (!isset($_SESSION["status"]) || $_SESSION["status"] !== "admin") {
                                         </tr>
                                         <tr>
                                             <th>Total Bayar</th>
-                                            <td><?= number_format($jual['total'], 0, ',', '.') ?></td>
+                                            <td>Rp <?= number_format($jual['total'], 0, ',', '.') ?></td>
                                         </tr>
                                         <tr>
                                             <th>Diskon</th>
-                                            <td><?= number_format($jual['diskon'], 0, ',', '.') ?></td>
+                                            <td>Rp <?= number_format($jual['diskon'], 0, ',', '.') ?></td>
                                         </tr>
                                     </tbody>
                                 </table>
