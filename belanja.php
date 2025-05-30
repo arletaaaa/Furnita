@@ -344,7 +344,7 @@
                             <P><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                                 Copyright &copy;<script>
                                     document.write(new Date().getFullYear());
-                                </script> All rights reserved | Furnita by <a href="#" target="_blank">Arleta</a>
+                                </script> All rights reserved | Furnita by <a href="https://www.instagram.com/arletaamaya?igsh=ejZ5ZHVndXBpeGNw" target="_blank">Arleta</a>
                                 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></P>
                         </div>
                     </div>
