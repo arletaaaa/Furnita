@@ -231,7 +231,7 @@ if (!isset($_SESSION["status"]) || $_SESSION["status"] !== "admin") {
 
             $result = mysqli_query($koneksi, $query);
             $data = mysqli_fetch_assoc($result);
-            $totalRevenue = isset($data['total_revenue']) ? $data['total_revenue'] : 0;
+            $totalRevenue = $data['total_revenue'] ?? 0;
             ?>
 
             <!-- Revenue Card -->
