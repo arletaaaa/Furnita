@@ -130,11 +130,9 @@
                                 <div class="col-lg-5 col-md-8">
                                     <div class="banner_text">
                                         <div class="banner_text_iner">
-                                            <h1>Wood & Cloth
-                                                Sofa</h1>
-                                            <p>Incididunt ut labore et dolore magna aliqua quis ipsum
-                                                suspendisse ultrices gravida. Risus commodo viverra</p>
-                                            <a href="#" class="btn_2">buy now</a>
+                                            <h1>Sofa Kayu & Kain</h1>
+                                            <p>Dirancang untuk menghadirkan estetika modern dengan kenyamanan maksimal. Rangka kayu solid dan balutan kain premium menjadikan sofa ini pilihan sempurna untuk ruang keluarga atau ruang tamu berkelas Anda.</p>
+                                            <a href="belanja.php" class="btn_2">Dapatkan Sekarang</a>
                                         </div>
                                     </div>
                                 </div>
@@ -148,11 +146,9 @@
                                 <div class="col-lg-5 col-md-8">
                                     <div class="banner_text">
                                         <div class="banner_text_iner">
-                                            <h1>Cloth & Wood
-                                                Sofa</h1>
-                                            <p>Incididunt ut labore et dolore magna aliqua quis ipsum
-                                                suspendisse ultrices gravida. Risus commodo viverra</p>
-                                            <a href="#" class="btn_2">buy now</a>
+                                            <h1>Sofa Minimalis, Maksimal Gaya</h1>
+                                            <p>Sofa modern dengan desain ramping, cocok untuk semua gaya interior. Lembut, nyaman, dan tahan lama — sempurna untuk bersantai setelah hari yang panjang.</p>
+                                            <a href="belanja.php" class="btn_2">Jelajahi Koleksi</a>
                                         </div>
                                     </div>
                                 </div>
@@ -166,11 +162,9 @@
                                 <div class="col-lg-5 col-md-8">
                                     <div class="banner_text">
                                         <div class="banner_text_iner">
-                                            <h1>Wood & Cloth
-                                                Sofa</h1>
-                                            <p>Incididunt ut labore et dolore magna aliqua quis ipsum
-                                                suspendisse ultrices gravida. Risus commodo viverra</p>
-                                            <a href="#" class="btn_2">buy now</a>
+                                            <h1>Teman Nyaman untuk Momen Berharga</h1>
+                                            <p>Dari waktu santai sore hari hingga kumpul keluarga di akhir pekan, sofa ini hadir untuk menemani setiap momen berharga Anda. Nyaman, kuat, dan penuh gaya — semuanya dalam satu desain.</p>
+                                            <a href="belanja.php" class="btn_2">Mulai dari Sini</a>
                                         </div>
                                     </div>
                                 </div>
@@ -210,7 +204,7 @@
             <div class="row justify-content-center">
                 <div class="col-lg-12">
                     <div class="section_tittle text-center">
-                        <h2>awesome <span>shop</span></h2>
+                        <h2>Temukan <span>Furniture terbaik</span></h2>
                     </div>
                 </div>
             </div>
@@ -264,8 +258,7 @@
                 </div>
                 <div class="col-lg-6 col-md-6">
                     <div class="offer_text">
-                        <h2>Weekly Sale on
-                            60% Off All Products</h2>
+                        <h2>Semua Produk Diskon 60% Hanya Minggu Ini!</h2>
                         <div class="date_countdown">
                             <div id="timer">
                                 <div id="days" class="date"></div>
@@ -276,7 +269,7 @@
                         </div>
                         <div class="input-group">
                             <div class="input-group-append">
-                                <a href="#" class="input-group-text btn_2" id="basic-addon2">book now</a>
+                                <a href="belanja.php" class="input-group-text btn_2" id="basic-addon2">Cek Sekarang</a>
                             </div>
                         </div>
                     </div>
