@@ -12,7 +12,7 @@ if (isset($_GET['id'])) {
     if ($query) {
         echo "<script>alert('Data pengguna berhasil dihapus!')</script>";
         header("refresh:0, pengguna.php");
-    } else{
+    } else {
         echo "<script>alert('Gagal menghapus data pengguna!')</script>";
         header("refresh:0, pengguna.php");
     }
