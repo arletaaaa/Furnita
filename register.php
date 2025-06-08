@@ -14,7 +14,7 @@ $data = mysqli_fetch_array($sql);
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Register - Furnita</title>
-    <link rel="icon" href="img/favicon.png">
+    <link rel="icon" href="img/logo_furnita.png">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <!-- animate CSS -->
