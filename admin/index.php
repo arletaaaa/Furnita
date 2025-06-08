@@ -62,7 +62,7 @@ if (!isset($_SESSION["status"]) || $_SESSION["status"] !== "admin") {
 
     <div class="d-flex align-items-center justify-content-between">
       <a href="index.php" class="logo d-flex align-items-center">
-        <img src="assets/img/logo.png" alt="">
+        <img src="assets/img/logo_furnita.png" alt="">
         <span class="d-none d-lg-block">Furnita</span>
       </a>
       <i class="bi bi-list toggle-sidebar-btn"></i>
