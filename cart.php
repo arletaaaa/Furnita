@@ -246,7 +246,7 @@
                 <tr>
                   <td colspan="3"></td>
                   <td>
-                    <h5>Total Biaya</h5>
+                    <h5>Total Bayar</h5>
                   </td>
                   <td style="text-align: right;">
                     <h5>Rp. <?php echo number_format($total_bayar, 0, ',', '.'); ?></h5>
@@ -258,7 +258,7 @@
 
           <div class="checkout_btn_inner float-right">
             <a class="btn_1" href="belanja.php">Continue Shopping</a>
-            <a class="btn_1 checkout_btn_1" id="checkoutBtn" href="#">Proceed to checkout</a>
+            <a class="btn_1 checkout_btn_1" id="checkoutBtn" href="#">Proses Pembayaran</a>
           </div>
         </div>
       </div>

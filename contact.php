@@ -171,26 +171,26 @@
                 <div class="form-group">
 
                   <textarea class="form-control w-100" name="message" id="message" cols="30" rows="9"
-                    onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Message'"
+                    onfocus="this.placeholder = ''" onblur="this.placeholder = 'Masukkan Pesan'"
                     placeholder='Masukkan Pesan'></textarea>
                 </div>
               </div>
               <div class="col-sm-6">
                 <div class="form-group">
                   <input class="form-control" name="name" id="name" type="text" onfocus="this.placeholder = ''"
-                    onblur="this.placeholder = 'Enter your name'" placeholder='Masukkan Nama Anda'>
+                    onblur="this.placeholder = 'Masukkan Nama Anda'" placeholder='Masukkan Nama Anda'>
                 </div>
               </div>
               <div class="col-sm-6">
                 <div class="form-group">
                   <input class="form-control" name="email" id="email" type="email" onfocus="this.placeholder = ''"
-                    onblur="this.placeholder = 'Enter email address'" placeholder='Masukkan Email Anda'>
+                    onblur="this.placeholder = 'Masukkan Email Anda'" placeholder='Masukkan Email Anda'>
                 </div>
               </div>
               <div class="col-12">
                 <div class="form-group">
                   <input class="form-control" name="subject" id="subject" type="text" onfocus="this.placeholder = ''"
-                    onblur="this.placeholder = 'Enter Subject'" placeholder='Masukkan Subjek'>
+                    onblur="this.placeholder = 'Masukkan Subjek'" placeholder='Masukkan Subjek'>
                 </div>
               </div>
             </div>
