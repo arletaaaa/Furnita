@@ -191,7 +191,7 @@
                             </div>
                         </div> -->
                     </div>
-                    <div class="slider-counter"></div>
+                    
                 </div>
             </div>
         </div>
