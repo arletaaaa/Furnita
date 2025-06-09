@@ -25,7 +25,7 @@ if (isset($_POST["login"])) {
         echo "<script>alert('Anda tidak memiliki akses sebagai admin.')</script>";
       }
     } else {
-      echo "<script>alert('Username atau password yang and masukkan salah.')</script>";
+      echo "<script>alert('Username atau password yang anda masukkan salah.')</script>";
     }
   } else {
     echo "<script>alert('Username atau password yang anda masukkan salah.')</script>";
