@@ -4,14 +4,14 @@ include "koneksi.php";
 
 // Cek apakah sudah login
 if (!isset($_SESSION["login"])) {
-  header("Location: login.php");
-  exit;
+    header("Location: login.php");
+    exit;
 }
 
 // Cek apakah status tersedia dan pastikan user adalah admin
 if (!isset($_SESSION["status"]) || $_SESSION["status"] !== "admin") {
-  echo "<script>alert('Akses ditolak! Halaman ini hanya untuk Admin.'); window.location.href='login.php'</script>";
-  exit;
+    echo "<script>alert('Akses ditolak! Halaman ini hanya untuk Admin.'); window.location.href='login.php'</script>";
+    exit;
 }
 ?>
 
@@ -251,7 +251,12 @@ if (isset($_POST['simpan'])) {
             &copy; Copyright <strong><span>Furnita</span></strong>. All Rights Reserved
         </div>
         <div class="credits">
-            Designed by <a href="https://www.instagram.com/arletaamaya?igsh=ejZ5ZHVndXBpeGNw">Arleta</a>
+            <!-- All the links in the footer should remain intact. -->
+            <!-- You can delete the links only if you purchased the pro version. -->
+            <!-- Licensing information: https://bootstrapmade.com/license/ -->
+            <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
+            Designed by <a href="https://www.instagram.com/arletaamaya?igsh=ejZ5ZHVndXBpeGNw"
+                target="_blank">Arleta</a>
         </div>
     </footer><!-- End Footer -->
 

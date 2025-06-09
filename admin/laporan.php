@@ -257,7 +257,7 @@ if (!isset($_SESSION["status"]) || $_SESSION["status"] !== "admin") {
                     } else {
                         url = "pdf_produk_kategori.php?id_kategori=" + tipe;
                     }
-                } else if (laporan === "transaksi"){
+                } else if (laporan === "transaksi") {
                     url = "pdf_transaksi.php";
                 }
 

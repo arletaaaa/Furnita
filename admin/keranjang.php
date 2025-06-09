@@ -203,7 +203,7 @@ if (!isset($_SESSION["status"]) || $_SESSION["status"] !== "admin") {
                     <div class="card">
                         <div class="card-body">
                             <!-- Table with stripped rows -->
-                            <?php 
+                            <?php
                             include 'koneksi.php';
 
                             //Query untuk mengambil data pesanan dengan join ke produk dan kategori
