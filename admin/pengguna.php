@@ -4,14 +4,14 @@ include "koneksi.php";
 
 // Cek apakah sudah login
 if (!isset($_SESSION["login"])) {
-  header("Location: login.php");
-  exit;
+    header("Location: login.php");
+    exit;
 }
 
 // Cek apakah status tersedia dan pastikan user adalah admin
 if (!isset($_SESSION["status"]) || $_SESSION["status"] !== "admin") {
-  echo "<script>alert('Akses ditolak! Halaman ini hanya untuk Admin.'); window.location.href='login.php'</script>";
-  exit;
+    echo "<script>alert('Akses ditolak! Halaman ini hanya untuk Admin.'); window.location.href='login.php'</script>";
+    exit;
 }
 ?>
 
@@ -232,8 +232,8 @@ if (!isset($_SESSION["status"]) || $_SESSION["status"] !== "admin") {
                                                 <td><?php echo $hasil['username']; ?></td>
                                                 <td><?php echo $hasil['status']; ?></td>
                                                 <td>
-                                                    <a href="h_pengguna.php?id=<?php echo $hasil['id_user']; ?>" 
-                                                    class="btn btn-danger" onclick="return confirm('Apakah Anda Yakin Ingin Menghapus Data?')">
+                                                    <a href="h_pengguna.php?id=<?php echo $hasil['id_user']; ?>"
+                                                        class="btn btn-danger" onclick="return confirm('Apakah Anda Yakin Ingin Menghapus Data?')">
                                                         <i class="bi bi-trash"></i>
                                                     </a>
                                                 </td>
@@ -266,7 +266,8 @@ if (!isset($_SESSION["status"]) || $_SESSION["status"] !== "admin") {
             &copy; Copyright <strong><span>Furnita</span></strong>. All Rights Reserved
         </div>
         <div class="credits">
-            Designed by <a href="https://www.instagram.com/arletaamaya?igsh=ejZ5ZHVndXBpeGNw">Arleta</a>
+            Designed by <a href="https://www.instagram.com/arletaamaya?igsh=ejZ5ZHVndXBpeGNw"
+                target="_blank">Arleta</a>
         </div>
     </footer><!-- End Footer -->
 
